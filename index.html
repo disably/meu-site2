@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>rembolsado</title>
+<!-- Link para o CSS externo -->
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Música -->
+<audio id="musica" src="musicatest1.mp3"></audio>
+
+<!-- Tela inicial com cadeado -->
+<div id="tela-inicial">
+    <svg id="cadeado" viewBox="0 0 24 24">
+        <path id="arco" d="M6 10V6a6 6 0 0 1 12 0v4"/>
+        <rect id="corpo" x="5" y="10" width="14" height="12"/>
+    </svg>
+</div>
+
+<!-- Tela do perfil -->
+<div id="perfil">
+    <div id="perfil-container">
+        <img src="Icon Branco.jfif" alt="Meu Icon">
+        <div id="minecraft-nick">disably.</div>
+        <div id="bio">just be you.</div>
+
+        <!-- Ícone Spotify preto com detalhes brancos -->
+        <a id="spotify-link" href="https://open.spotify.com/user/31oszvizoih5l5vaxbjvkan72edm" target="_blank">
+            <svg viewBox="0 0 168 168">
+                <circle cx="84" cy="84" r="84" fill="#000"/>
+                <path d="M119.1 118.1c-1.5 2.2-4.4 2.9-6.6 1.4-18.1-11-40.9-13.5-67.7-7.5-2.6.5-5.2-1.2-5.7-3.8-.5-2.6 1.2-5.2 3.8-5.7 28.4-5.3 53 1 72.1 8.6 2.2 1.5 2.9 4.4 1.4 6.6zm9.1-18.5c-1.8 2.7-5.3 3.5-7.9 1.7-20.7-13-52.2-16.8-76.7-9.3-3.1.9-6.5-1-7.4-4.1-.9-3.1 1-6.5 4.1-7.4 27-7.7 61.6-3.7 84.6 10.6 2.7 1.8 3.5 5.3 1.7 7.9zm1.4-18.9c-23.8-14.2-63-15.5-84.1-8.5-3.6 1.1-7.5-1-8.6-4.6-1.1-3.6 1-7.5 4.6-8.6 23-7 66-5.7 91.2 9.1 3.2 1.9 4.3 6.2 2.4 9.4-1.9 3.2-6.2 4.3-9.5 2.6z" fill="#fff"/>
+            </svg>
+        </a>
+    </div>
+</div>
+
+<script>
+const telaInicial = document.getElementById('tela-inicial');
+const perfil = document.getElementById('perfil');
+const arco = document.getElementById('arco');
+const musica = document.getElementById('musica');
+
+telaInicial.addEventListener('click', () => {
+    arco.style.transform = 'rotate(-25deg) translateY(-2px)';
+    musica.play();
+    setTimeout(() => {
+        telaInicial.style.display = 'none';
+        perfil.style.display = 'flex';
+        createSnowflakes();
+    }, 800);
+});
+
+function createSnowflakes() {
+    for(let i=0; i<50; i++){
+        const snow = document.createElement('div');
+        snow.classList.add('snowflake');
+        snow.style.left = Math.random() * 100 + 'vw';
+        snow.style.fontSize = (Math.random() * 12 + 8) + 'px';
+        snow.style.animationDuration = (Math.random() * 5 + 5) + 's';
+        snow.style.animationDelay = Math.random() * 5 + 's';
+        snow.innerHTML = '❄';
+        perfil.appendChild(snow);
+    }
+}
+</script>
+</body>
+</html>
